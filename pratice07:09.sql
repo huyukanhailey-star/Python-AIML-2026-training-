@@ -1,3 +1,4 @@
+-- 07/09 practice
 CREATE DATABASE company_db;
 USE company_db;
 CREATE TABLE customer_info (
