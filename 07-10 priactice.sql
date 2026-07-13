@@ -26,11 +26,11 @@ SELECT actor_id, first_name, last_name FROM actor limit 50;
 # filter WHERE
 SELECT * FROM film;
 SELECT DISTINCT rating FROM film;
-SELECT * FROM film WHERE rating = "PG" and length >=90;
-SELECT * FROM film WHERE rating != "PG" and length >=90;
-SELECT length FROM film ORDER BY length desc;
-SELECT * FROM film WHERE rating = 'R'and length <90 ORDER BY rental_rate desc; 
-SELECT * FROM film WHERE rating != 'R'and length <90 ORDER BY rental_rate desc; 
+SELECT * FROM film WHERE rating = 'PG' AND length >=90;
+SELECT * FROM film WHERE rating != 'PG' AND length >=90;
+SELECT length FROM film ORDER BY length DESC;
+SELECT * FROM film WHERE rating = 'R'AND length <90 ORDER BY rental_rate DESC; 
+SELECT * FROM film WHERE rating != 'R'And length <90 ORDER BY rental_rate DESC; 
 
 # two wild cards 'like' % _
 SELECT title FROM film WHERE original_language_id like 'M%'; # want to check Mandarin language
@@ -47,7 +47,7 @@ SELECT country FROM country WHERE country like '_e%';  # 12 rows returned
 # null 
 SELECT * FROM rental; #1000 rows returned
 SELECT rental_id, customer_id, rental_date, return_date FROM rental WHERE return_date is null; #183 rows returned
-SELECT rental_id, customer_id, rental_date, return_date FROM rental WHERE return_date BETWEEN 2005-05-01 and 2006-02-15; # nothing
+SELECT rental_id, customer_id, rental_date, return_date FROM rental WHERE return_date BETWEEN '2005-05-01' and '2006-02-15'; # 3 rows returned
 
 #group by and having
 # check who rents more than 10
