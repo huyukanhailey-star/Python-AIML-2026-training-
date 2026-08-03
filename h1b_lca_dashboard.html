@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>H-1B LCA Sponsorship — FY2026 Q2 Case File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<style>
+  :root{
+    --ink:#1B2A41;
+    --ink-soft:#3B4A61;
+    --paper:#F7F4EC;
+    --paper-2:#EFEADC;
+    --paper-3:#E4DDC8;
+    --amber:#B5720F;
+    --amber-light:#E8B565;
+    --stamp:#A13D2B;
+    --line:#D3CBB2;
+    --serif: 'Fraunces', serif;
+    --mono: 'IBM Plex Mono', monospace;
+    --sans: 'Inter', sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    line-height:1.55;
+  }
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px 80px;}
+
+  header{
+    border-bottom:2px solid var(--ink);
+    padding:28px 0 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    flex-wrap:wrap;
+    gap:16px;
+  }
+  .case-id{
+    font-family:var(--mono);
+    font-size:12px;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    text-transform:uppercase;
+  }
+  h1{
+    font-family:var(--serif);
+    font-weight:500;
+    font-size:clamp(28px, 4vw, 42px);
+    margin:6px 0 0;
+    letter-spacing:-0.01em;
+  }
+  .meta{
+    text-align:right;
+    font-family:var(--mono);
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.7;
+  }
+  .stamp{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    border:2px solid var(--stamp);
+    color:var(--stamp);
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    padding:5px 12px;
+    border-radius:3px;
+    transform:rotate(-2deg);
+    margin-top:10px;
+  }
+  .summary{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    margin:36px 0;
+  }
+  .stat{ background:var(--paper); padding:20px 18px; }
+  .stat-label{
+    font-family:var(--mono); font-size:11px; text-transform:uppercase;
+    letter-spacing:0.08em; color:var(--ink-soft); margin-bottom:8px;
+  }
+  .stat-value{ font-family:var(--serif); font-size:28px; font-weight:500; }
+  .stat-sub{ font-family:var(--mono); font-size:11px; color:var(--amber); margin-top:4px; }
+
+  section{margin:56px 0;}
+  .section-head{
+    display:flex; align-items:baseline; gap:14px;
+    border-bottom:1px solid var(--ink); padding-bottom:10px; margin-bottom:22px;
+  }
+  .tab-num{
+    font-family:var(--mono); font-size:12px; background:var(--ink);
+    color:var(--paper); padding:3px 8px; border-radius:2px;
+  }
+  h2{ font-family:var(--serif); font-weight:500; font-size:22px; margin:0; }
+  .section-note{ font-family:var(--mono); font-size:11px; color:var(--ink-soft); margin-left:auto; }
+
+  .panel{ background:var(--paper-2); border:1px solid var(--line); border-radius:4px; padding:24px; }
+  .two-col{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media (max-width: 860px){ .two-col{grid-template-columns:1fr;} .summary{grid-template-columns:repeat(1,1fr);} }
+
+  .chart-box{position:relative; height:340px;}
+  .chart-box.tall{height:460px;}
+
+  .finding{
+    font-family:var(--sans); font-size:14px; color:var(--ink-soft); margin-top:16px;
+    padding:14px 16px; background:var(--paper); border-left:3px solid var(--amber);
+  }
+  .finding b{color:var(--ink); font-weight:600;}
+
+  .caveats{ font-family:var(--mono); font-size:12.5px; color:var(--ink-soft); line-height:1.9; }
+  .caveats li{margin-bottom:6px;}
+
+  /* Key insights appendix */
+  .insight-block{ margin-bottom:26px; }
+  .insight-block:last-child{ margin-bottom:0; }
+  .insight-title{
+    font-family:var(--mono); font-size:12px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--amber); margin-bottom:10px; border-bottom:1px dashed var(--line); padding-bottom:6px;
+  }
+  .insight-block ul{ margin:0; padding-left:20px; }
+  .insight-block li{ margin-bottom:10px; font-size:14.5px; }
+  .insight-block p{ font-size:14.5px; margin:0 0 10px; }
+  .insight-block b{ color:var(--ink); }
+
+  footer{
+    border-top:2px solid var(--ink); margin-top:64px; padding-top:20px;
+    font-family:var(--mono); font-size:11px; color:var(--ink-soft);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div>
+      <div class="case-id">Case file · LCA Disclosure Data</div>
+      <h1>H-1B sponsorship, FY2026 Q2</h1>
+      <div class="stamp">&#9679; Data verified</div>
+    </div>
+    <div class="meta">
+      Source: U.S. DOL, Office of Foreign Labor Certification<br>
+      Records: 210,387 total LCA filings (203,416 H-1B)<br>
+      Prepared for portfolio review
+    </div>
+  </header>
+
+  <div class="summary">
+    <div class="stat">
+      <div class="stat-label">Total filings</div>
+      <div class="stat-value">210,387</div>
+      <div class="stat-sub">H-1B / H-1B1 / E-3, FY26 Q2</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Median wage</div>
+      <div class="stat-value">$130,000</div>
+      <div class="stat-sub">annualized, validated</div>
+    </div>
+    <div class="stat">
+      <div class="stat-label">Unique employers</div>
+      <div class="stat-value">28,948</div>
+      <div class="stat-sub">top 20 = 21.3% of filings</div>
+    </div>
+  </div>
+
+  <section>
+    <div class="section-head">
+      <span class="tab-num">01</span>
+      <h2>Who sponsors the most</h2>
+      <span class="section-note">top 20 employers by filing volume</span>
+    </div>
+    <div class="panel">
+      <div class="chart-box tall"><canvas id="employerChart" role="img" aria-label="Horizontal bar chart of top 20 employers by H-1B filing count, led by Amazon.com Services LLC with 5,201 filings, in descending order."></canvas></div>
+      <div class="finding">
+        The top 20 employers account for just <b>21.3%</b> of all filings, while <b>50.4%</b> of the 28,948 unique employers filed only once — sponsorship is broadly distributed well beyond the well-known large sponsors.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="tab-num">02</span>
+      <h2>Volume vs. pay</h2>
+      <span class="section-note">top 10 occupations, each metric</span>
+    </div>
+    <div class="two-col">
+      <div class="panel">
+        <div class="chart-box"><canvas id="volumeChart" role="img" aria-label="Horizontal bar chart of top 10 occupations by filing volume, led by Software Developers with 66,956 filings, in descending order."></canvas></div>
+      </div>
+      <div class="panel">
+        <div class="chart-box"><canvas id="wageChart" role="img" aria-label="Horizontal bar chart of top 10 occupations by median annualized wage, led by Urologists at $500,000, in descending order."></canvas></div>
+      </div>
+    </div>
+    <div class="finding" style="margin-top:20px;">
+      Volume and pay diverge sharply: none of the highest-volume tech occupations rank among the highest-paid. The top-paying roles are almost entirely <b>physician specialties</b>, reflecting medicine's licensure-intensive, specialized nature rather than IT's broader but lower-median demand.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="tab-num">03</span>
+      <h2>Where the jobs are</h2>
+      <span class="section-note">worksite state, all 50 states + DC</span>
+    </div>
+    <div class="panel">
+      <div class="chart-box tall"><canvas id="stateChart" role="img" aria-label="Horizontal bar chart of top 15 US states by H-1B worksite filing count, led by California with 41,299 filings, in descending order."></canvas></div>
+    </div>
+    <div class="finding" style="margin-top:20px;">
+      CA and TX lead by a wide margin, followed by a cluster of tech/finance/consulting hubs (NY, WA, NJ, IL, GA, MA). The pattern tracks <b>industry concentration, not political alignment</b> — top states span both traditionally blue and red states alike.
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="tab-num">04</span>
+      <h2>Data quality notes</h2>
+      <span class="section-note">cleaning decisions on file</span>
+    </div>
+    <div class="panel">
+      <ul class="caveats">
+        <li>WAGE_ANNUALIZED: 475 records (0.23%) flagged &amp; excluded above an $800K cap — traced to hourly-unit mislabeling on annual-scale wages, not real outliers.</li>
+        <li>EMPLOYER_NAME / WORKSITE_CITY / SOC_TITLE: casing &amp; whitespace standardized. WORKSITE_CITY unique values dropped from 7,009 &#8594; 5,309.</li>
+        <li>SOC_TITLE: ~25 singular/plural duplicates identified (e.g. PSYCHIATRIST vs PSYCHIATRISTS), left unmerged — noted as a known limitation.</li>
+        <li>JOB_TITLE (52,767 unique, free text) excluded from grouping in favor of standardized SOC_TITLE.</li>
+        <li>Scope: FY26 Q1+Q2 combined — adding data from additional years would strengthen trend analysis.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head">
+      <span class="tab-num">05</span>
+      <h2>Key insights &amp; conclusions</h2>
+      <span class="section-note">from the analysis notebook</span>
+    </div>
+    <div class="panel">
+
+      <div class="insight-block">
+        <div class="insight-title">Data overview</div>
+        <p>210,387 LCA filings (H-1B / H-1B1 / E-3) for FY2026 Q2.</p>
+      </div>
+
+      <div class="insight-block">
+        <div class="insight-title">Data quality findings</div>
+        <ul>
+          <li><b>Missing data:</b> WAGE_RATE_OF_PAY_TO is missing 67% — structural, not an error (single-rate wages don't populate a 'to' field). DECISION_DATE missing ~1% — likely pending cases.</li>
+          <li><b>Skewness:</b> Raw wage data had extreme skewness (39.75), traced to a data entry error (annual-scale wages mislabeled with WAGE_UNIT_OF_PAY = 'Hour', causing the annualization logic to multiply an already-annual figure by 2,080). After flagging and excluding ~0.23% of implausible records (WAGE_ANNUALIZED &gt; $800K), skewness dropped to 2.14 — a realistic right-skewed distribution typical of salary data. Records were flagged via a WAGE_VALID boolean rather than dropped, preserving their non-wage fields for other analyses.</li>
+          <li><b>Categorical text noise:</b> EMPLOYER_NAME, WORKSITE_CITY, and SOC_TITLE all had inconsistent casing/whitespace that inflated unique counts (e.g. WORKSITE_CITY dropped from 7,009 to 5,309 unique values after standardization). SOC_TITLE additionally had ~25 singular/plural variants of the same occupation (e.g. PSYCHIATRIST vs PSYCHIATRISTS) that were identified but left unmerged. JOB_TITLE (free-text, 52,767 unique values) was excluded from grouping entirely in favor of the standardized SOC_TITLE field. WORKSITE_STATE was checked and confirmed clean (55 valid US state/territory codes).</li>
+        </ul>
+      </div>
+
+      <div class="insight-block">
+        <div class="insight-title">Business insights</div>
+        <ul>
+          <li><b>Top sponsors:</b> Amazon, EY, Apple, Cognizant, Google, Microsoft, Meta, Infosys dominate filing volume — a mix of Big Tech and IT consulting/staffing firms. However, sponsorship is highly dispersed overall: the top 20 employers account for only 21.25% of filings, while over half of all 28,948 unique employers filed just once — suggesting H-1B opportunities extend well beyond the well-known large sponsors.</li>
+          <li><b>Top occupations by volume:</b> Software Developers dominate (66,956 filings, more than the next several occupations combined), followed by Computer Systems Engineers/Architects, IT Project Managers, and Data Scientists — tech roles account for nearly all of the top 15 by filing count.</li>
+          <li><b>Volume and pay diverge sharply:</b> None of the highest-volume tech occupations rank among the highest-paid. The top 20 occupations by median wage are almost entirely physician specialties (Urologists ~$500K, Dermatologists ~$450K, Cardiologists ~$425K), reflecting the licensure-intensive, specialized nature of medicine rather than IT's broader but lower-median demand. Overall median wage across all filings is ~$130K.</li>
+          <li><b>Geography:</b> CA and TX are the top two states by filing volume (CA leads with 41,299 filings, TX follows with 30,721), well ahead of NY, WA, and NJ. The concentration pattern tracks industry hubs — tech, finance, and consulting — rather than political alignment: the top states span both traditionally blue (CA, NY, WA, IL, MA) and red (TX, GA, NC) states alike.</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <span>H-1B LCA Disclosure Data · dol.gov/agencies/eta/foreign-labor/performance</span>
+    <span>Built with Chart.js + D3.js · static export</span>
+  </footer>
+
+</div>
+
+<script>
+Chart.defaults.font.family = "'IBM Plex Mono', monospace";
+Chart.defaults.color = '#3B4A61';
+
+const ink = '#1B2A41';
+const amber = '#B5720F';
+const teal = '#2E6E62';
+const grid = '#D3CBB2';
+
+// All charts are fed data pre-sorted descending (largest first);
+// scales.y.reverse:true makes the first array item render at the TOP.
+function hbar(id, labels, data, color, fmt){
+  const ctx = document.getElementById(id);
+  new Chart(ctx, {
+    type: 'bar',
+    data: { labels, datasets: [{ data, backgroundColor: color, borderRadius: 2, maxBarThickness: 20 }] },
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: { display: false },
+        tooltip: { callbacks: { label: (c) => fmt(c.raw) } }
+      },
+      scales: {
+        x: { grid: { color: grid }, ticks: { color: '#3B4A61', font:{size:10} } },
+        y: { grid: { display:false }, ticks: { color: ink, font:{size:11} } }
+      }
+    }
+  });
+}
+
+hbar('employerChart',
+  ['Amazon.com Services LLC','Ernst & Young U.S. LLP','Apple Inc.','Cognizant Technology Solutions','Google LLC','Microsoft Corporation','Meta Platforms, Inc','Infosys Limited','Tata Consultancy Services','JPMorgan Chase & Co.','Deloitte Consulting LLP','Nvidia Corporation','Amazon Web Services, Inc.','Compunnel Software Group','Tesla, Inc.','Intel Corporation','Fidelity Technology Group','Wipro Limited','Capgemini America Inc','PayPal, Inc.'],
+  [5201,4171,3965,3441,2988,2879,2535,2444,1850,1803,1788,1276,1232,1184,1180,1172,1105,1070,1009,925],
+  amber, (v) => v.toLocaleString() + ' filings'
+);
+
+hbar('volumeChart',
+  ['Software developers','Computer systems engineers/architects','IT project managers','Software QA analysts & testers','Data scientists','Computer & info systems managers','Computer programmers','Computer systems analysts','Business intelligence analysts','Electronics engineers, except computer'],
+  [66956,7863,7521,7253,7223,5482,4771,4234,3923,3426],
+  ink, (v) => v.toLocaleString() + ' filings'
+);
+
+hbar('wageChart',
+  ['Urologists','Dermatologists','Cardiologists','Anesthesiologists','Surgeons, all others','Internists, general','Radiologists','Psychiatrists','Ophthalmologists, except pediatric','Emergency medicine physicians'],
+  [500000,450000,425000,400000,400000,400000,392533,330240,325000,320424],
+  teal, (v) => '$' + v.toLocaleString()
+);
+
+hbar('stateChart',
+  ['California','Texas','New York','Washington','New Jersey','North Carolina','Illinois','Georgia','Massachusetts','Florida','Pennsylvania','Michigan','Virginia','Ohio','Arizona'],
+  [41299,30721,15575,13112,9080,8306,8005,7583,7042,6102,5429,5198,4869,4130,3504],
+  amber, (v) => v.toLocaleString() + ' filings'
+);
+</script>
+</body>
+</html>
